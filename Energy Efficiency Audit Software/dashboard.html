@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+
+    body {
+      background-color: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .dashboard {
+      width: 900px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .back-btn {
+      background-color: #4c669f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #3a4d7a;
+    }
+
+    h2 {
+      background: linear-gradient(90deg, #4c669f, #3b5998);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+
+    .time-filter {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .time-filter button {
+      background: #dfe7f2;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .time-filter button.active {
+      background: #4c669f;
+      color: white;
+    }
+
+    .efficiency-score {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      color: #4c669f;
+      margin-top: 20px;
+    }
+
+    .efficiency-score p {
+      font-size: 16px;
+      color: gray;
+    }
+
+    .metrics {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 0;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric p {
+      font-weight: bold;
+      color: #666;
+    }
+
+    .metric h3 {
+      font-size: 22px;
+      color: #333;
+    }
+
+    .metric span {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .positive {
+      color: green;
+    }
+
+    .negative {
+      color: red;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      height: 300px;
+      margin-bottom: 30px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .tips {
+      background: #eef2f7;
+      padding: 15px 20px;
+      border-radius: 10px;
+    }
+
+    .tips h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .tips ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .tips li {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="top-bar">
+      <a href="homepage.html" class="back-btn">← Back to Home</a>
+      <h2>Energy Dashboard</h2>
+    </div>
+
+    <div class="time-filter">
+      <button class="active">Week</button>
+      <button>Month</button>
+      <button>Year</button>
+    </div>
+
+    <div class="efficiency-score">
+      <span>85</span>
+      <p>Efficiency Score</p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <p>Total Usage</p>
+        <h3>2,456 kWh</h3>
+        <span class="positive">+2.3%</span>
+      </div>
+      <div class="metric">
+        <p>Carbon Footprint</p>
+        <h3>1.2 tons</h3>
+        <span class="negative">-5.1%</span>
+      </div>
+      <div class="metric">
+        <p>Cost Savings</p>
+        <h3>$345.20</h3>
+        <span class="positive">+12.5%</span>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="energyChart"></canvas>
+    </div>
+
+    <div class="tips">
+      <h3>Energy Saving Tips</h3>
+      <ul>
+        <li>Switch to LED bulbs to save up to 75% energy.</li>
+        <li>Unplug devices when not in use.</li>
+        <li>Set your thermostat efficiently.</li>
+        <li>Use natural light during daytime.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById("energyChart").getContext("2d");
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [{
+          label: "Energy Consumption (kWh)",
+          data: [55, 68, 81, 60, 72, 65, 78],
+          borderColor: "#4c669f",
+          borderWidth: 2,
+          fill: false,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: { color: "#333" }
+          },
+          y: {
+            ticks: { color: "#333" }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

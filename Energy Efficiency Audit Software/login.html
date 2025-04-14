@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | WattTrack</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #e0f7f4, #c1f0ec);
+      color: #2a3d66;
+      font-size: 16px;
+      min-height: 100vh;
+    }
+    header {
+    background-color: #ffffff;
+    color: #2a3d66;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00a89d; /* Greenish Blue */
+}
+
+.logo span {
+    color: #7fdbff; /* Light Blue */
+}
+
+nav a.home-button {
+    text-decoration: none;
+    background-color: #00c1a0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav a.home-button:hover {
+    background-color: #009688;
+}
+
+   
+
+    /* Login Container */
+    .login-container {
+      background-color: #ffffff;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #00796b;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #00bfa5;
+      outline: none;
+    }
+
+    button {
+      background-color: #00bfa5;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #009e8b;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #00796b;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Watt<span>Track</span></div>
+        <nav>
+          <a href="startpage.html" class="home-button">Home</a>
+        </nav>
+      </header>
+      
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const user = JSON.parse(localStorage.getItem(email));
+
+      if (user && user.password === password) {
+        alert('Login successful!');
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+        window.location.href = 'homepage.html'; // Redirect to Home Page
+      } else {
+        alert('Invalid email or password.');
+      }
+    });
+  </script>
+
+</body>
+</html>

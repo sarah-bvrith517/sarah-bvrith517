@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WattTrack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    
+    body {
+      background: #a0d8d3; /* Darker Green Background */
+      color: #333;
+    }
+
+    header {
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00a89d;
+    }
+
+    .logo span {
+      color: #7fdbff;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    nav a.login {
+      background-color: #00c1a0;
+      color: white;
+    }
+
+    nav a.signup {
+      background-color: #7d2ae8;
+      color: white;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 480px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .highlight {
+      color: #00c1a0;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .feature {
+      max-width: 200px;
+      margin: 20px;
+    }
+
+    .feature img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      color: #144d43;
+      margin: 10px 0;
+    }
+
+    .modules, .testimonials {
+      padding: 40px;
+    }
+
+    .modules h2, .testimonials h2 {
+      margin-bottom: 20px;
+      color: #444;
+      text-align: center;
+    }
+
+    .modules-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .modules-content img {
+      max-width: 100%;
+      border-radius: 10px;
+      flex: 1;
+    }
+
+    .modules-content p {
+      max-width: 400px;
+      flex: 1;
+    }
+
+    .testimonial-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .testimonial {
+      background: #e6f7f5;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 250px;
+    }
+
+    .rotating-text {
+      display: inline-block;
+      font-weight: bold;
+      color: #00bfa5;
+      background-color: #d2f5ec;
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Watt<span>Track</span></div>
+    <nav>
+      <a href="login.html" class="login">Log In</a>
+      <a href="signup.html" class="signup">Try It</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>
+        Make Better<br>
+        <span style="background-color: #a0f0dc; padding: 4px 8px; border-radius: 8px;"> 
+          <span id="changingWord" style="background-color: #a0f0dc; padding: 4px 8px; border-radius: 8px;"></span>
+        </span><br>
+        Decisions
+      </h1>
+      <p>
+        Our simple-to-use software helps organisations around the world improve sustainability,
+        save time, meet compliance and reduce costs across energy, waste, water and carbon.
+      </p>
+      <div style="background-color: #e0f7f4; padding: 15px 20px; border-left: 5px solid #00bfa5; border-radius: 10px; margin-top: 20px;">
+        📽️ <strong>Want to see how it works?</strong><br>
+        <a href="start-video.mp4" target="_blank" style="color: #00796b; font-weight: 600; text-decoration: underline;">
+          Watch our quick intro video
+        </a><br>
+        to understand how WattTrack empowers smarter sustainability decisions.
+      </div>
+    </div>
+
+    
+    <div style="flex: 1; padding-left: 40px;">
+      <img src="temp1.jpg" alt="Platform Preview"
+           style="width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px;">
+    </div>
+  </section>
+
+  <!-- JavaScript for rotating words -->
+  <script>
+    const words = ["Sustainable", "Carbon", "Energy", "Resource", "Efficiency", "Environmental", "Green"];
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % words.length;
+      document.getElementById("changingWord").textContent = words[i];
+    }, 2000);
+  </script>
+
+ 
+<!-- In the features section -->
+<section class="features">
+  <div class="feature">
+    <img src="sustain.jpeg" alt="Sustainability Icon">
+    <h3>Improve Sustainability</h3>
+  </div>
+  <div class="feature">
+    <img src="time.jpeg" alt="Time Icon">
+    <h3>Save Time</h3>
+  </div>
+  <div class="feature">
+    <img src="compilance.jpeg" alt="Compliance Icon">
+    <h3>Meet Compliance</h3>
+  </div>
+  <div class="feature">
+    <img src="cost.jpeg" alt="Cost Icon">
+    <h3>Reduce Costs</h3>
+  </div>
+</section>
+
+<!-- In the modules section -->
+<section class="modules">
+  <h2>Some Of Our Key Features And Modules</h2>
+  <div class="modules-content">
+    <div>
+      <p>
+        WattTrack helps you make smarter energy decisions using your meter readings, bills, and sustainability data. We visualize trends, compare with industry standards, and suggest AI-powered savings insights.
+      </p>
+    </div>
+    <img src="eneff.png" alt="Insights Graphic" />
+  </div>
+  <div class="modules-content">
+    <img src="cf2.png" alt="Carbon Footprint Image" />
+    <div>
+      <p>
+        Understanding and tracking your carbon footprint is crucial in today’s world. Our platform allows you to monitor emissions, generate sustainability reports, and identify opportunities to go greener.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="testimonials">
+    <h2>What Some Of Our Customers Are Saying</h2>
+    <div class="testimonial-group">
+      <div class="testimonial">"This software is really user-friendly and efficient."</div>
+      <div class="testimonial">"Easy to use, easy to understand."</div>
+      <div class="testimonial">"The experience has been very positive overall."</div>
+    </div>
+  </section>
+
+  <script>
+    var words = ["Carbon", "Energy", "Resource", "Efficiency", "Sustainable", "Environmental", "Green"];
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % words.length;
+      document.getElementById("changingWord").textContent = words[i];
+    }, 2000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

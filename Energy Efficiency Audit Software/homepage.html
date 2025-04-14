@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTrack - Home</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #b2dfdb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #009688;
+    }
+
+    .logout {
+      background-color: #9c27b0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #7b1fa2;
+    }
+
+    .welcome-text {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      font-style: italic;
+      color: #004d40;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .sidebar {
+      background: linear-gradient(135deg, #26a69a, #00796b);
+      color: white;
+      width: 300px;
+      padding: 30px 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.6em;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .flowchart-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .flow-step {
+      background-color: white;
+      color: #00796b;
+      padding: 12px 18px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      position: relative;
+    }
+
+    .flow-step:hover {
+      background-color: #b2dfdb;
+      transform: scale(1.05);
+    }
+
+    .arrow {
+      font-size: 1.2em;
+      color: white;
+      margin: 8px 0;
+    }
+
+    .content {
+      flex: 1;
+      padding: 60px 20px;
+      background-color: #e0f2f1;
+      border-radius: 20px;
+      margin-left: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .content h1 {
+      font-size: 2.5em;
+      color: #004d40;
+      text-align: center;
+    }
+
+    .flow-img {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .flow-img img {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta {
+      display: block;
+      margin: 40px auto 10px;
+      padding: 12px 28px;
+      background-color: #26a69a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta:hover {
+      background-color: #1e857e;
+      transform: scale(1.05);
+    }
+
+    .how-section {
+      margin-top: 60px;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .how-section p {
+      font-size: 1.4em;
+      color: #00796b;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .how-steps {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border-radius: 12px;
+      width: 150px;
+      margin: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+    }
+
+    .step i {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .purple { background-color: #7e57c2; }
+    .pink { background-color: #ec407a; }
+    .yellow { background-color: #fbc02d; color: black; }
+    .teal { background-color: #26a69a; }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #004d40;
+      color: white;
+      border-top: 4px solid #00796b;
+      border-radius: 0 0 20px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+        margin-bottom: 20px;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+
+      .how-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">EcoTrack</div>
+    <button class="logout">Logout</button>
+  </header>
+
+  <div class="welcome-text">Welcome to EcoTrack</div>
+
+  <section class="container">
+    <aside class="sidebar">
+      <h2>Trace Your Audit</h2>
+      <div class="flowchart-nav">
+        <a href="meter.html" class="flow-step">1. Meter Read</a>
+        <div class="arrow">↓</div>
+        <a href="dashboard.html" class="flow-step">2. Dashboard</a>
+        <div class="arrow">↓</div>
+        <a href="audit.html" class="flow-step">3. Audit Report</a>
+        <div class="arrow">↓</div>
+        <a href="recommend.html" class="flow-step">4. Smart Recommendations</a>
+        <div class="arrow">↓</div>
+        <a href="savings.html" class="flow-step">5. Saving Potential</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h1>Track Your Energy Flow</h1>
+
+      <div class="flow-img">
+        <img src="temp2.jpg" alt="Illustration of energy saving" />
+      </div>
+
+      <button class="cta">Get Started</button>
+      <p style="font-size: 1.2em; text-align: center; margin-top: 20px; color: #004d40; font-weight: bold;">Saving Energy is Cool</p>
+
+      <div class="how-section">
+        <p>At ECOTRACK, we never 4-GET.</p>
+        <div class="how-steps">
+          <div class="step purple">
+            <i class="fas fa-chart-pie"></i><span>1. Get Data</span>
+          </div>
+          <div class="step pink">
+            <i class="fas fa-search"></i><span>2. Get Insights</span>
+          </div>
+          <div class="step yellow">
+            <i class="fas fa-rocket"></i><span>3. Get Actions</span>
+          </div>
+          <div class="step teal">
+            <i class="fas fa-trophy"></i><span>4. Get Results</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <footer>
+    <p>&copy; Experience smart energy efficiency — redefined and customized for EcoTrack.</p>
+  </footer>
+
+  <script>
+    document.querySelector(".logout").addEventListener("click", function () {
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

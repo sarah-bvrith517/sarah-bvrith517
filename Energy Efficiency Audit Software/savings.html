@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Potential</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #00a89d;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .back-btn {
+      background: white;
+      color: #00a89d;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 40px;
+    }
+
+    .summary {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .summary h2 {
+      margin-bottom: 15px;
+      color: #00a89d;
+    }
+
+    .recommendations table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .recommendations th, .recommendations td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .recommendations th {
+      background-color: #00c1a0;
+      color: white;
+    }
+
+    canvas {
+      margin-top: 30px;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Energy Savings Potential</h1>
+    <button class="back-btn" onclick="window.location.href='homepage.html'">Back to Home</button>
+  </header>
+
+  <main>
+    <section class="summary">
+      <h2>Overview</h2>
+      <p><strong>Current Monthly Usage:</strong> 2,400 kWh</p>
+      <p><strong>Projected Usage (After Suggestions):</strong> 1,728 kWh</p>
+      <p><strong>Estimated Savings:</strong> 28%</p>
+      <p><strong>Monthly Cost Reduction:</strong> ₹860</p>
+      <p><strong>Annual Energy Saved:</strong> 8,064 kWh</p>
+      <p><strong>CO₂ Reduction:</strong> 3.5 tons/year</p>
+    </section>
+
+    <section class="recommendations">
+      <h2>Top Recommendations & Impact</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Suggestion</th>
+            <th>Savings Potential</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Switch to LED lighting</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>Smart thermostat installation</td>
+            <td>7%</td>
+          </tr>
+          <tr>
+            <td>Energy-efficient appliances</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Turning off idle electronics</td>
+            <td>2%</td>
+          </tr>
+          <tr>
+            <td>HVAC maintenance & insulation</td>
+            <td>2%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <canvas id="comparisonChart"></canvas>
+  </main>
+
+  <script>
+    const ctx = document.getElementById('comparisonChart').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Lighting', 'Heating/Cooling', 'Appliances', 'Electronics', 'Others'],
+        datasets: [
+          {
+            label: 'Current Usage (kWh)',
+            data: [700, 800, 400, 300, 200],
+            backgroundColor: '#00a89d'
+          },
+          {
+            label: 'Projected Usage (kWh)',
+            data: [500, 600, 300, 240, 180],
+            backgroundColor: '#7fdbff'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: 'Current vs Projected Energy Usage by Category'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

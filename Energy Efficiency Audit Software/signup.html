@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - WattTrack</title>
+  <!-- Importing Google Font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #e0f7fa; /* Light Blue-Green Background */
+      color: #00796b; /* Dark Blue-Green Text */
+      font-size: 16px;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      color: #00796b; /* Dark Blue-Green Text */
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00bfae; /* Blue-Green Logo Color */
+    }
+
+    .logo span {
+      color: #00796b; /* Darker Blue-Green for accent */
+    }
+
+    nav a.home-button {
+      text-decoration: none;
+      background-color: #00bfae; /* Blue-Green Button */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a.home-button:hover {
+      background-color: #00796b; /* Darker Blue-Green on hover */
+    }
+
+    /* Form Styles */
+    .signup-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Updated font for the heading */
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00796b; /* Dark Blue-Green Text */
+      font-family: 'Poppins', sans-serif; /* Using Poppins Font */
+      font-weight: 600;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #00796b; /* Dark Blue-Green Label Text */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #80cbc4; /* Lighter Blue-Green Border */
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: #00bfae; /* Blue-Green Focus Border */
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background-color: #00796b; /* Dark Blue-Green Button */
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40; /* Darker Blue-Green Button on hover */
+    }
+
+    p {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    p a {
+      color: #00bfae; /* Blue-Green Link */
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with logo and Home button -->
+  <header>
+    <div class="logo">Watt<span>Track</span></div>
+    <nav>
+      <a href="startpage.html" class="home-button">Home</a>
+    </nav>
+  </header>
+
+  <!-- Sign-Up Form -->
+  <div class="signup-container">
+    <h2>Create Your Account</h2>
+    <form id="signup-form">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Log In</a></p>
+  </div>
+
+  <!-- Sign-Up Logic -->
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const user = {
+        name: name,
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem(email, JSON.stringify(user));
+      alert('Account created successfully!');
+      window.location.href = 'login.html'; // Redirect to login after sign-up
+    });
+  </script>
+</body>
+</html>
